@@ -1,0 +1,18 @@
+---
+
+- name: clone dokku repository
+  git: "repo=https://github.com/progrium/dokku.git dest=/home/{{ ansible_ssh_user }}/dokku"
+  sudo: no
+
+- name: make install dokku
+  command: "make install chdir=/home/{{ ansible_ssh_user }}/dokku creates=/var/lib/dokku"
+  sudo: yes
+
+- name: "Configure dokku vhost setting"
+  copy: "dest=/home/dokku/VHOST content={{ dokku_vhost }}"
+  sudo: yes
+
+- name: "Install plugins if specified"
+  git: "repo={{ item.repo }} dest=/var/lib/dokku/plugins/{{ item.name }} accept_hostkey=yes version={{ item.version|default('master') }}"
+  with_items: dokku_plugins
+  sudo: yes

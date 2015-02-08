@@ -1,0 +1,6 @@
+---
+
+- name: "copy ssh keys of all users onto server"
+  sudo: yes
+  with_items: sshkeys
+  shell: echo "{{ item.value }}" | sshcommand acl-add dokku {{ item.name }}
