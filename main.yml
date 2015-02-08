@@ -1,0 +1,17 @@
+---
+
+- hosts: dokku
+  sudo: yes
+
+  vars:
+    - dokku_version: "0.3.14"
+    - dokku_vhost: "{{ hostname }}"
+    - dokku_plugins: []
+    - sshkeys:
+      - name: digitalsadhu
+        value: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBryo6gudb5yljhXthSvSBs5R90aVbifb+jgyTX5MAI8BGiU/kUYdlAObJ68jE5uAcjax7HACtd84guP9nkItgsMUYHAseo/UcUUWc3Nrum6/i3FS34WaELe1ncEHVD6tEFtPAdjRB3e4YE5CuqP/9XLYU4Iz4pE6HrZnx3Qqb3Fn4z5p5stt/OrxgIU8uM5Utv/eb010b8xk5yBboGDHDeJftADRJKPQ9HeVDjHF5K390NAr0IgLCwfKCpjv+9ee1lKopjojjfP4gwQcXuViGZcDXPswp8quqQbJmJ46dQUdVXQVyUrmFRHq0OPnp84QPl0LABDhzO/H0XW0C0dzJ digitalsadhu@gmail.com"
+
+  roles:
+    - git
+    - dokku
+    - sshkeys
