@@ -10,6 +10,6 @@
     - sshkeys: []
 
   roles:
-    - git
+    - dependencies
     - dokku
     - sshkeys
