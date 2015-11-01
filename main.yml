@@ -4,7 +4,7 @@
   sudo: yes
 
   vars:
-    - dokku_version: "0.3.14"
+    - dokku_version: "0.4.3"
     - dokku_vhost: "{{ hostname }}"
     - dokku_plugins: []
     - sshkeys: []
