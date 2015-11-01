@@ -1,19 +1,11 @@
 ---
-
-- name: install git
-  apt: "name=git state=latest update_cache=yes"
-
-- name: install make
-  apt: "name=git state=latest update_cache=yes"
-
-- name: install curl
-  apt: "name=git state=latest update_cache=yes"
-
-- name: install software-properties-common
-  apt: "name=git state=latest update_cache=yes"
-
-- name: install man-db
-  apt: "name=git state=latest update_cache=yes"
-
-- name: install help2man
-  apt: "name=git state=latest update_cache=yes"
+- name: install apt packages
+  apt: pkg={{ item }} update_cache=yes
+  sudo: yes
+  with_items:
+    - git
+    - make
+    - curl
+    - software-properties-common
+    - man-db
+    - help2man
